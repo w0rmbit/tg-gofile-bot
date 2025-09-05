@@ -43,7 +43,7 @@ def get_gofile_txt_files(folder_url):
 
 # --- Bot Handlers ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("👋 Send me a Gofile folder link and I’ll fetch all .txt files for you.")
+    await update.message.reply_text("👋 Send me a Gofile folder link and I’ll send you all .txt files one by one.")
 
 async def handle_folder(update: Update, context: ContextTypes.DEFAULT_TYPE):
     url = update.message.text.strip()
