@@ -22,7 +22,7 @@ def webhook():
     return "OK", 200
 
 def run_flask():
-    port = int(os.getenv("PORT", 8000))
+    port = int(os.getenv("PORT", 10000))  # Render sets PORT automatically
     app.run(host="0.0.0.0", port=port)
 
 # --- Telegram Bot Setup ---
@@ -91,14 +91,14 @@ if __name__ == "__main__":
     # Start Flask in a separate thread
     threading.Thread(target=run_flask).start()
 
-    # Set webhook URL (replace YOUR_KOYEB_APP_URL)
-    webhook_url = f"https://YOUR_KOYEB_APP_URL/{BOT_TOKEN}"
+    # Set webhook URL (replace YOUR_RENDER_APP_NAME)
+    webhook_url = f"https://YOUR_RENDER_APP_NAME.onrender.com/{BOT_TOKEN}"
     bot_app.bot.set_webhook(url=webhook_url)
 
     # Start processing updates from webhook
     bot_app.run_webhook(
         listen="0.0.0.0",
-        port=int(os.getenv("PORT", 8000)),
+        port=int(os.getenv("PORT", 10000)),
         url_path=BOT_TOKEN,
         webhook_url=webhook_url
     )
